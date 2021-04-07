@@ -22,10 +22,12 @@ public class Image extends GridTemplate {
 	
 	// Constructs an empty grid
 	public Image () {
+		super();
 	}
 
 	// Constructs the grid defined in the file specified
 	public Image (String filename) {
+		super(20, 20, filename);
 	}
 	
 	/**

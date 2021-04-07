@@ -12,14 +12,14 @@ public abstract class GridTemplate {
 
 	/** Add a field to represent the grid. This time, make it a 2D array of characters. **/
 	
-	
+	protected char[][] grid;
 	
 	
 	/**
 	 * Construct an empty 2D array with some default dimensions.
 	 */
 	public GridTemplate() {
-		
+		grid = new char[20][20];
 	}
 	
 	
@@ -31,7 +31,8 @@ public abstract class GridTemplate {
 	 * @param filename The text file to read from.
 	 */
 	public GridTemplate(int width, int height, String filename) {
-		
+		grid = new char[height][width];
+		this.readData(filename, grid);
 	}
 	
 	
@@ -41,7 +42,14 @@ public abstract class GridTemplate {
 	 * 
 	 */
 	public String toString() {
-		return null;
+		String output = "";
+		for(int i=0; i<grid.length; i++) {
+			for(int j=0; j<grid[0].length; j++) {
+				output += grid[i][j];
+			}
+			output += "\n";
+		}
+		return output;
 	}
 	
 	
@@ -57,6 +65,21 @@ public abstract class GridTemplate {
 	 * @param height The pixel height of the grid drawing.
 	 */
 	public void draw(PApplet marker, float x, float y, float width, float height) {
+		for (int i=0; i<grid.length; i++) {
+			for (int j=0; j<grid[0].length; j++) {
+		/*		if(grid[i][j]) {
+					marker.fill(250, 250, 0);;
+				}else {
+					marker.fill(170);
+				}*/
+				marker.fill(170);
+				float rectWidth = width/grid[0].length;
+				float rectHeight = height/grid.length;
+				float rectX = x + rectWidth*j;
+				float rectY = y + rectHeight*i;
+				marker.rect(rectX, rectY, rectWidth, rectHeight);
+			}
+		}	
 	}
 	
 	
@@ -74,7 +97,10 @@ public abstract class GridTemplate {
 	 * falls completely outside of the grid.
 	 */
 	public Point clickToIndex(Point p, float x, float y, float width, float height) {
-		return null;
+		int i = (int) ((p.y - y)*grid.length/height);
+		int j = (int) ((p.x - y)*grid[0].length/width);
+		Point coordinates = new Point(i, j);
+		return coordinates;
 	}
 	
 
