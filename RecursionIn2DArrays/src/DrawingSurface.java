@@ -18,7 +18,7 @@ public class DrawingSurface extends PApplet {
 	
 	
 	public DrawingSurface() {
-		board = new Image("testfiles/paintcan/digital.txt");
+		board = new Image("testfiles/maze/test1.txt");
 	}
 	
 

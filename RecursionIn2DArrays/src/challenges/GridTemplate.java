@@ -67,10 +67,16 @@ public abstract class GridTemplate {
 	public void draw(PApplet marker, float x, float y, float width, float height) {
 		for (int i=0; i<grid.length; i++) {
 			for (int j=0; j<grid[0].length; j++) {
-				if(grid[i][j] == '*') {
-					marker.fill(255,255,255);;
+				if(grid[i][j] == '*' || grid[i][j] == '.') {
+					marker.fill(255); //White
+				}else if(grid[i][j] == '#'){
+					marker.fill(50); //Black
+				}else if(grid[i][j] == '!'){
+					marker.fill(200); //Light Grey
+				}else if(grid[i][j] == 'X') {
+					marker.fill(255, 255, 50); //Bright Yellow
 				}else {
-					marker.fill(150);
+					marker.fill(150); //Dark Grey
 				}
 				float rectWidth = width/grid[0].length;
 				float rectHeight = height/grid.length;
