@@ -31,7 +31,6 @@ public class DrawingSurface extends PApplet {
 		if (board != null) {
 			board.draw(this, 0, 0, height, height);
 		}
-		
 	}
 	
 	

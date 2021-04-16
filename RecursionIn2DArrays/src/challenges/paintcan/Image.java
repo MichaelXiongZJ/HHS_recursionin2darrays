@@ -37,10 +37,32 @@ public class Image extends GridTemplate {
 	 * @param y The y coordinate of the beginning of the paint can fill.
 	 */
 	public void paintCanFill(int x, int y) {
+		if(canFill(x,y)) {
+			fill(x,y);
+			if(canFill(x+1, y)) {
+				paintCanFill(x+1, y);
+			} if(canFill(x, y+1)) {
+				paintCanFill(x, y+1);
+			} if(canFill(x-1, y)) {
+				paintCanFill(x-1, y);
+			} if(canFill(x, y-1)) {
+				paintCanFill(x, y-1);
+			}				
+		}
 	}
 	
 	
 	// Additional private recursive methods
+	public void fill(int x, int y) {
+		if(grid[x][y] == '*') {
+			grid[x][y] = ' ';
+		}
+	}
 
-
+	public boolean canFill(int x, int y) {	
+		if(x>=0 && x< 20 && y>=0 && y<20) {
+			return grid[x][y] == '*';
+		}
+		return false;
+	}
 }
