@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 
 import challenges.GridTemplate;
+import challenges.maze.Maze;
 import challenges.paintcan.Image;
 import processing.core.PApplet;
 
@@ -14,11 +15,12 @@ import processing.core.PApplet;
 public class DrawingSurface extends PApplet {
 
 	// When you progress to a new prompt, modify this field.
-	private Image board;
-	
+//	private Image board;
+	private Maze board;
 	
 	public DrawingSurface() {
-		board = new Image("testfiles/maze/test1.txt");
+	//	board = new Image("testfiles/paintcan/digital.txt");
+		board = new Maze("testfiles/maze/test4.txt");
 	}
 	
 
@@ -40,7 +42,8 @@ public class DrawingSurface extends PApplet {
 			float dimension = height;
 			Point cellCoord = board.clickToIndex(click,0,0,dimension,dimension);
 			if (cellCoord != null) {
-				board.paintCanFill(cellCoord.x, cellCoord.y);   // When you progress to a new prompt, modify this method call.
+			//	board.paintCanFill(cellCoord.x, cellCoord.y);   // When you progress to a new prompt, modify this method call.
+				board.findPath(cellCoord.x, cellCoord.y);  
 			}
 		} 
 	}

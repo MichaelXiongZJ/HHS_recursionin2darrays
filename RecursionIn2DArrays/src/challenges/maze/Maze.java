@@ -26,6 +26,7 @@ public class Maze extends GridTemplate {
 
 	// Constructs the grid defined in the file specified
 	public Maze(String filename) {
+		super(20, 20, filename);
 	}
 
 	/**
@@ -38,11 +39,43 @@ public class Maze extends GridTemplate {
 	 * @return true if a path to the exit was found, false if no such path exists in the maze.
 	 */
 	public boolean findPath(int x, int y) {
+		if(grid[x][y] == 'X') { //Base case
+			grid[x][y] = 'C';
+			System.out.println("Path Found" + "\nShaded blocks are the path");
+			return true;
+		}else if(grid[x][y] == '.'){
+			grid[x][y] = '!';
+			if(canWalk(x+1, y)) {
+				if(findPath(x+1, y)) {
+					return findPath(x+1, y);
+				}
+			}  
+			if(canWalk(x, y+1)) {
+				if(findPath(x, y+1)) {
+					return findPath(x, y+1);
+				}
+			} 
+			if(canWalk(x-1, y)) {
+				if(findPath(x-1, y)) {
+					return findPath(x-1, y);
+				}
+			} 
+			if(canWalk(x, y-1)) {
+				if(findPath(x, y-1)) {
+					return findPath(x, y-1);
+				}
+			}
+		}
 		return false;
 	}
 	
 	
 	// Additional private recursive methods
-
+	private boolean canWalk(int x, int y) {	
+		if(x>=0 && x< 20 && y>=0 && y<20) {
+			return grid[x][y] == '.' || grid[x][y] == 'X';
+		}
+		return false;
+	}
 
 }

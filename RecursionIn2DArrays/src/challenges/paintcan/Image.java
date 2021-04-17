@@ -53,13 +53,13 @@ public class Image extends GridTemplate {
 	
 	
 	// Additional private recursive methods
-	public void fill(int x, int y) {
+	private void fill(int x, int y) {
 		if(grid[x][y] == '*') {
 			grid[x][y] = ' ';
 		}
 	}
 
-	public boolean canFill(int x, int y) {	
+	private boolean canFill(int x, int y) {	
 		if(x>=0 && x< 20 && y>=0 && y<20) {
 			return grid[x][y] == '*';
 		}
