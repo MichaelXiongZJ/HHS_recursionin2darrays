@@ -77,6 +77,10 @@ public abstract class GridTemplate {
 					marker.fill(255, 255, 50); //Bright Yellow
 				}else if(grid[i][j] == 'C') {
 					marker.fill(190, 190, 50); //Dark Yellow
+				}else if(grid[i][j] == 'A'){
+					marker.fill(200, 50, 50); //Red
+				}else if(grid[i][j] == '@'){
+					marker.fill(100, 100, 200);//Purple
 				}else {
 					marker.fill(150); //Dark Grey
 				}

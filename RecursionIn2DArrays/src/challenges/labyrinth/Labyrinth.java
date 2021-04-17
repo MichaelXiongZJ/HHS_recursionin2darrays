@@ -26,7 +26,7 @@ public class Labyrinth extends GridTemplate {
 
 	// Constructs the grid defined in the file specified
 	public Labyrinth(String filename) {
-
+		super(20, 20, filename);
 	}
 
 	/**

@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 
 import challenges.GridTemplate;
+import challenges.labyrinth.Labyrinth;
 import challenges.maze.Maze;
 import challenges.paintcan.Image;
 import processing.core.PApplet;
@@ -16,11 +17,13 @@ public class DrawingSurface extends PApplet {
 
 	// When you progress to a new prompt, modify this field.
 //	private Image board;
-	private Maze board;
+//	private Maze board;
+	private Labyrinth board;
 	
 	public DrawingSurface() {
 	//	board = new Image("testfiles/paintcan/digital.txt");
-		board = new Maze("testfiles/maze/test4.txt");
+	//	board = new Maze("testfiles/maze/test4.txt");
+		board = new Labyrinth("testfiles/Labyrinth/test4.txt");
 	}
 	
 
