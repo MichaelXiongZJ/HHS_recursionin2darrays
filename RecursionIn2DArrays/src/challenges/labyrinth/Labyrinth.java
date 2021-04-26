@@ -40,6 +40,40 @@ public class Labyrinth extends GridTemplate {
 	*/
 	public ArrayList<Point> findPath(int x, int y) {
 		ArrayList <Point> path = new ArrayList<Point>();
+		
+		if(!canWalk(x,y)) {
+			//do nothing
+		}else if(grid[x][y] == 'X') {	//goal
+			path.add(new Point(x,y));
+			return path;
+		}else if(hasCloak) {
+			if(grid[x][y] == '.' || grid[x][y] == 'A') {
+			//next four directions
+				findPath(x+1, y);
+
+				findPath(x-1, y);
+				
+				findPath(x, y+1);
+				
+				findPath(x, y-1);
+				
+			}
+		}else if(grid[x][y] == '.') {
+			findPath(x+1, y);
+
+			findPath(x-1, y);
+			
+			findPath(x, y+1);
+			
+			findPath(x, y-1);
+			
+		}else if(grid[x][y] == '@') {
+			hasCloak = true;
+			grid[x][y] = '.';
+			return findPath(x,y);
+		}
+	//	return path;
+		/*
 		if(grid[x][y] == 'X') { //Base case
 			grid[x][y] = 'C';
 			System.out.println("Path Found" + "\nShaded blocks are the path");
@@ -78,6 +112,7 @@ public class Labyrinth extends GridTemplate {
 		}
 		System.out.println(path.get(0));
 		return path;
+		*/
 	}
 
 
@@ -86,11 +121,12 @@ public class Labyrinth extends GridTemplate {
 	private boolean canWalk(int x, int y) {	
 		if(x>=0 && x< 20 && y>=0 && y<20) {
 			if(!hasCloak) {
-				return grid[x][y] == '.' || grid[x][y] == 'X';
+				return grid[x][y] == '.' || grid[x][y] == 'X' || grid[x][y] == '@';
 			}else {
-				return grid[x][y] == '.' || grid[x][y] == 'X' || grid[x][y] == 'A';
+				return grid[x][y] == '.' || grid[x][y] == 'X' || grid[x][y] == 'A' || grid[x][y] == '@';
 			}
 		}
 		return false;
 	}
+	
 }
