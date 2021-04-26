@@ -82,24 +82,24 @@ public class Labyrinth extends GridTemplate {
 		}else if(grid[x][y] == '@'){
 			hasCloak = true;
 			grid[x][y] = '.';
-			findPath(x, y);
+			return findPath(x, y);
 		}else if(canWalk(x,y)) {
 			grid[x][y] = '!';
 			if(canWalk(x+1, y)) {
 				path.add(new Point(x+1, y));
-				return findPath(x+1, y);
+				findPath(x+1, y);
 			}  
 			if(canWalk(x, y+1)) {
 				path.add(new Point(x, y+1));
-				return findPath(x, y+1);
+				findPath(x, y+1);
 			} 
 			if(canWalk(x-1, y)) {
 				path.add(new Point(x-1, y));
-				return findPath(x-1, y);
+				findPath(x-1, y);
 			} 
 			if(canWalk(x, y-1)) {
 				path.add(new Point(x, y-1));
-				return findPath(x, y-1);
+				findPath(x, y-1);
 			}
 		}
 		return path;
