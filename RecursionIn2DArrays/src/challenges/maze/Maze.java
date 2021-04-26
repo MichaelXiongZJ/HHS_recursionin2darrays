@@ -49,28 +49,16 @@ public class Maze extends GridTemplate {
 		}else if(grid[x][y] == '.'){
 			grid[x][y] = '!';
 			if(canWalk(x+1, y)) {
-				if(findPath(x+1, y)) {
-				//	path[x+1][y] = 'A';
-					return true;
-				}
+				return findPath(x+1, y);
 			}  
 			if(canWalk(x, y+1)) {
-				if(findPath(x, y+1)) {
-				//	path[x][y+1] = 'A';
-					return true;
-				}
+				return findPath(x, y+1);
 			} 
 			if(canWalk(x-1, y)) {
-				if(findPath(x-1, y)) {
-				//	path[x-1][y] = 'A';
-					return true;
-				}
+				return findPath(x-1, y);
 			} 
 			if(canWalk(x, y-1)) {
-				if(findPath(x, y-1)) {
-				//	path[x][y-1] = 'A';
-					return true;
-				}
+				return findPath(x, y-1);
 			}
 		}
 		return false;

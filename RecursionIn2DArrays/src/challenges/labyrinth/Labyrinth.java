@@ -40,7 +40,7 @@ public class Labyrinth extends GridTemplate {
 	*/
 	public ArrayList<Point> findPath(int x, int y) {
 		ArrayList <Point> path = new ArrayList<Point>();
-		
+		/*
 		if(!canWalk(x,y)) {
 			//do nothing
 		}else if(grid[x][y] == 'X') {	//goal
@@ -72,8 +72,8 @@ public class Labyrinth extends GridTemplate {
 			grid[x][y] = '.';
 			return findPath(x,y);
 		}
-	//	return path;
-		/*
+	//	return path;*/
+		
 		if(grid[x][y] == 'X') { //Base case
 			grid[x][y] = 'C';
 			System.out.println("Path Found" + "\nShaded blocks are the path");
@@ -86,33 +86,26 @@ public class Labyrinth extends GridTemplate {
 		}else if(grid[x][y] == '.'){
 			grid[x][y] = '!';
 			if(canWalk(x+1, y)) {
-			//	if(findPath(x+1, y)) {
-					path.add(new Point(x+1, y));
-					return path;
-			//	}
+				path.add(new Point(x+1, y));
+				return path;
 			}  
 			if(canWalk(x, y+1)) {
-			//	if(findPath(x, y+1)) {
-					path.add(new Point(x, y+1));
-					return path;
-			//	}
+				path.add(new Point(x, y+1));
+				return path;
 			} 
 			if(canWalk(x-1, y)) {
-			//	if(findPath(x-1, y)) {
-					path.add(new Point(x-1, y));
-					return path;
-			//	}
+				path.add(new Point(x-1, y));
+				return path;
 			} 
 			if(canWalk(x, y-1)) {
-			//	if(findPath(x, y-1)) {
-					path.add(new Point(x, y-1));
-					return path;
+				path.add(new Point(x, y-1));
+				return path;
 
 			}
 		}
-		System.out.println(path.get(0));
+	//	System.out.println(path.get(0));
 		return path;
-		*/
+		
 	}
 
 
