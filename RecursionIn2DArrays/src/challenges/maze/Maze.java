@@ -19,7 +19,9 @@ import challenges.GridTemplate;
 */
 
 public class Maze extends GridTemplate {
-
+//
+	private char[][] path = grid;
+	
 	// Constructs an empty grid
 	public Maze() {
 	}
@@ -27,6 +29,7 @@ public class Maze extends GridTemplate {
 	// Constructs the grid defined in the file specified
 	public Maze(String filename) {
 		super(20, 20, filename);
+		
 	}
 
 	/**
@@ -47,22 +50,26 @@ public class Maze extends GridTemplate {
 			grid[x][y] = '!';
 			if(canWalk(x+1, y)) {
 				if(findPath(x+1, y)) {
-					return findPath(x+1, y);
+				//	path[x+1][y] = 'A';
+					return true;
 				}
 			}  
 			if(canWalk(x, y+1)) {
 				if(findPath(x, y+1)) {
-					return findPath(x, y+1);
+				//	path[x][y+1] = 'A';
+					return true;
 				}
 			} 
 			if(canWalk(x-1, y)) {
 				if(findPath(x-1, y)) {
-					return findPath(x-1, y);
+				//	path[x-1][y] = 'A';
+					return true;
 				}
 			} 
 			if(canWalk(x, y-1)) {
 				if(findPath(x, y-1)) {
-					return findPath(x, y-1);
+				//	path[x][y-1] = 'A';
+					return true;
 				}
 			}
 		}

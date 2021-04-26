@@ -18,6 +18,8 @@ import java.util.ArrayList;
 */
 
 public class Labyrinth extends GridTemplate {
+	
+	private ArrayList <Point> path = new ArrayList<Point>();
 
 	// Constructs an empty grid
 	public Labyrinth() {
@@ -38,14 +40,16 @@ public class Labyrinth extends GridTemplate {
 	* element is the location of the starting point and the last element is the location of the exit, or null if no path can be found.
 	*/
 	public ArrayList<Point> findPath(int x, int y) {
-		if(grid[x][y] == 'X') { //Base case
+		if(!canWalk(x ,y)) {
+			
+		}else if(grid[x][y] == 'X') { //Base case
 			grid[x][y] = 'C';
 			System.out.println("Path Found" + "\nShaded blocks are the path");
-			return true;
 		}else if(grid[x][y] == '.'){
 			grid[x][y] = '!';
 			if(canWalk(x+1, y)) {
 				if(findPath(x+1, y)) {
+					path.add(new Point(x+1, y));
 					return findPath(x+1, y);
 				}
 			}  
@@ -69,13 +73,14 @@ public class Labyrinth extends GridTemplate {
 	}
 
 
+
+	// Additional private recursive methods
 	private boolean canWalk(int x, int y) {	
 		if(x>=0 && x< 20 && y>=0 && y<20) {
 			return grid[x][y] == '.' || grid[x][y] == 'X';
 		}
 		return false;
 	}
-	// Additional private recursive methods
-
+	
 
 }
