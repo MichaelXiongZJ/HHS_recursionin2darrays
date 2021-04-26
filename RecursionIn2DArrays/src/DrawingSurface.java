@@ -17,13 +17,13 @@ public class DrawingSurface extends PApplet {
 
 	// When you progress to a new prompt, modify this field.
 //	private Image board;
-//	private Maze board;
-	private Labyrinth board;
+	private Maze board;
+//	private Labyrinth board;
 	
 	public DrawingSurface() {
 	//	board = new Image("testfiles/paintcan/digital.txt");
-	//	board = new Maze("testfiles/maze/test5.txt");
-		board = new Labyrinth("testfiles/Labyrinth/test4.txt");
+		board = new Maze("testfiles/maze/test6.txt");
+	//	board = new Labyrinth("testfiles/Labyrinth/test4.txt");
 	}
 	
 
