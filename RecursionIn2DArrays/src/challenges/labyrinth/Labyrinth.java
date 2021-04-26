@@ -83,29 +83,26 @@ public class Labyrinth extends GridTemplate {
 			hasCloak = true;
 			grid[x][y] = '.';
 			findPath(x, y);
-		}else if(grid[x][y] == '.'){
+		}else if(canWalk(x,y)) {
 			grid[x][y] = '!';
 			if(canWalk(x+1, y)) {
 				path.add(new Point(x+1, y));
-				return path;
+				return findPath(x+1, y);
 			}  
 			if(canWalk(x, y+1)) {
 				path.add(new Point(x, y+1));
-				return path;
+				return findPath(x, y+1);
 			} 
 			if(canWalk(x-1, y)) {
 				path.add(new Point(x-1, y));
-				return path;
+				return findPath(x-1, y);
 			} 
 			if(canWalk(x, y-1)) {
 				path.add(new Point(x, y-1));
-				return path;
-
+				return findPath(x, y-1);
 			}
 		}
-	//	System.out.println(path.get(0));
 		return path;
-		
 	}
 
 
@@ -113,10 +110,10 @@ public class Labyrinth extends GridTemplate {
 	// Additional private recursive methods
 	private boolean canWalk(int x, int y) {	
 		if(x>=0 && x< 20 && y>=0 && y<20) {
-			if(!hasCloak) {
-				return grid[x][y] == '.' || grid[x][y] == 'X' || grid[x][y] == '@';
+			if(hasCloak) {
+				return grid[x][y] == '.' || grid[x][y] == 'X' || grid[x][y] == '@' || grid[x][y] == 'A';
 			}else {
-				return grid[x][y] == '.' || grid[x][y] == 'X' || grid[x][y] == 'A' || grid[x][y] == '@';
+				return grid[x][y] == '.' || grid[x][y] == 'X' || grid[x][y] == '@';
 			}
 		}
 		return false;
