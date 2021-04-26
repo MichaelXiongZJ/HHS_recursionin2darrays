@@ -73,9 +73,10 @@ public class Labyrinth extends GridTemplate {
 			//	if(findPath(x, y-1)) {
 					path.add(new Point(x, y-1));
 					return path;
-			//	}
+
 			}
 		}
+		System.out.println(path.get(0));
 		return path;
 	}
 
